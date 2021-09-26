@@ -17,13 +17,17 @@ public class RentMyCarApplication {
 	public CommandLineRunner run(UserRepository repo ){
 		return (args -> {
 			insertUser(repo);
-			System.out.println(repo.findAll());
+
+			System.out.println(repo.findUserByLastNameContaining(" "));
 		});
 	}
 
 	private void insertUser(UserRepository repo){
-		repo.save(new User("mail@mail.mail", "Firstname1", "Lastname1", "Address 1", "123456", 6, 7));
-		repo.save(new User("mail@mail.mail", "Firstname2", "Lastname2", "Address 2", "123456", 6, 7));
-		repo.save(new User("mail@mail.mail", "Firstname3", "Lastname3", "Address 3", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Roboute", "Guilliman", "Address 2", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Magnus", "the Red", "Address 3", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Conrad", "Curze", "Address 1", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7));
 	}
 }
