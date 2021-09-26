@@ -16,9 +16,10 @@ public class RentMyCarApplication {
 	@Bean
 	public CommandLineRunner run(UserRepository repo ){
 		return (args -> {
-			insertUser(repo);
-
-			System.out.println(repo.findUserByLastNameContaining(" "));
+			//insertUser(repo);
+			for (User user : repo.findUserByLastNameContaining("e")){
+				System.out.println(user);
+			}
 		});
 	}
 
@@ -26,7 +27,7 @@ public class RentMyCarApplication {
 		repo.save(new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7));
 		repo.save(new User("mail@mail.mail", "Roboute", "Guilliman", "Address 2", "123456", 6, 7));
 		repo.save(new User("mail@mail.mail", "Magnus", "the Red", "Address 3", "123456", 6, 7));
-		repo.save(new User("mail@mail.mail", "Conrad", "Curze", "Address 1", "123456", 6, 7));
+		repo.save(new User("mail@mail.mail", "Konrad", "Curze", "Address 1", "123456", 6, 7));
 		repo.save(new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7));
 		repo.save(new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7));
 	}
