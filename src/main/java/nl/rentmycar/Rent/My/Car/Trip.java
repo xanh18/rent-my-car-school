@@ -1,11 +1,11 @@
 package nl.rentmycar.Rent.My.Car;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,10 @@ public class Trip {
     private LocalDateTime endDateTime;
     private double longitude;
     private double latitude;
-    private double range;
     private double TCO;
+
+    @OneToMany(targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
+    public List<Acceleration> accelerations;
 
     public Long getId() {
         return id;
@@ -67,20 +69,21 @@ public class Trip {
         this.latitude = latitude;
     }
 
-    public double getRange() {
-        return range;
-    }
-
-    public void setRange(double range) {
-        this.range = range;
-    }
-
     public double getTCO() {
         return TCO;
     }
 
     public void setTCO(double TCO) {
         this.TCO = TCO;
+    }
+
+    public List<Acceleration> accelerations() {
+        return accelerations;
+    }
+
+    public void addAcceleration(Acceleration acceleration) {
+        acceleration.setTrip(this);
+        this.accelerations.add(acceleration);
     }
 
     @Override
@@ -92,22 +95,21 @@ public class Trip {
                 ", endDateTime=" + endDateTime +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
-                ", range=" + range +
                 ", TCO=" + TCO +
                 '}';
     }
 
-    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double range, double TCO) {
+    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO) {
         this.distance = distance;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.range = range;
         this.TCO = TCO;
+        this.accelerations = new ArrayList<>();
     }
 
     public Trip(){
-
+        this.accelerations = new ArrayList<>();
     }
 }
