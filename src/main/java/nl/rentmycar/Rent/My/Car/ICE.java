@@ -1,20 +1,20 @@
-package nl.RMC.Car;
+package nl.rentmycar.Rent.My.Car;
 
 import java.awt.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ICE extends Car{
 
     private Integer tank;
 
-    public ICE(Long id,
+    public ICE(
                String brand,
-               Image image,
+               String image,
                String brandModel,
                Integer kmDriven,
-               Date endDateTime,
+               LocalDateTime endDateTime,
                Integer range,
                Double TCO) {
-        super(id, brand, image, brandModel, kmDriven, endDateTime, range, TCO);
+        super(brand, image, brandModel, kmDriven, endDateTime, range, TCO);
     }
 }

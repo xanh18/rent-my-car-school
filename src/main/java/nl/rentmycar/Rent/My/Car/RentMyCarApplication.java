@@ -1,5 +1,6 @@
 package nl.rentmycar.Rent.My.Car;
 
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,12 +17,14 @@ public class RentMyCarApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run(UserRepository repo ){
+	public CommandLineRunner run (CarRepository repo ){
 		return (args -> {
-			insertUser(repo);
-			for (User user : repo.findUserByLastNameContaining("e")){
-				System.out.println(user);
-			}
+//			insertUser(repo);
+//			for (User user : repo.findUserByLastNameContaining("e")){
+//				System.out.println(user);
+//			}
+			insertCar(repo);
+
 		});
 	}
 
@@ -39,4 +42,10 @@ public class RentMyCarApplication {
 		repo.save(new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7));
 		repo.save(new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7));
 	}
+
+	private void insertCar(CarRepository repo){
+		repo.save(new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),10000,53.44));
+		repo.save(new Car("volkswagen","Avans","gold",10, LocalDateTime.now(),10000,53.44));
+	}
+
 }

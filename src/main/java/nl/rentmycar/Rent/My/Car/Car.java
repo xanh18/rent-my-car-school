@@ -1,36 +1,42 @@
-package nl.RMC.Car;
+package nl.rentmycar.Rent.My.Car;
 
+import javax.persistence.*;
 import java.awt.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
+@Entity
 public class Car {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id",nullable = false)
     private Long id;
     private String brand;
-    private Image image;
+    private String image;
     private String brandModel;
     private Integer kmDriven;
-    private Date endDateTime;
-    private Integer range;
+    private LocalDateTime endDateTime;
+    private Integer carRange;
     private Double TCO;
 
-    public Car(Long id,
-               String brand,
-               Image image,
+    public Car(String brand,
+               String image,
                String brandModel,
                Integer kmDriven,
-               Date endDateTime,
+               LocalDateTime endDateTime,
                Integer range,
-               Double TCO) {
-        this.id = id;
+               Double TCO)
+    {
         this.brand = brand;
         this.image = image;
         this.brandModel = brandModel;
         this.kmDriven = kmDriven;
         this.endDateTime = endDateTime;
-        this.range = range;
+        this.carRange = range;
         this.TCO = TCO;
     }
+
+    public Car(){}
 
     public Long getId() {
         return id;
@@ -48,11 +54,11 @@ public class Car {
         this.brand = brand;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -72,20 +78,20 @@ public class Car {
         this.kmDriven = kmDriven;
     }
 
-    public Date getEndDateTime() {
+    public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(Date endDateTime) {
+    public void setEndDateTime(LocalDateTime endDateTime) {
         this.endDateTime = endDateTime;
     }
 
-    public Integer getRange() {
-        return range;
+    public Integer getcarRange() {
+        return carRange;
     }
 
-    public void setRange(Integer range) {
-        this.range = range;
+    public void setRange(Integer carRange) {
+        this.carRange = carRange;
     }
 
     public Double getTCO() {
@@ -96,3 +102,5 @@ public class Car {
         this.TCO = TCO;
     }
 }
+
+

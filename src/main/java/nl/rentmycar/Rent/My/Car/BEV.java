@@ -1,23 +1,23 @@
-package nl.RMC.Car;
+package nl.rentmycar.Rent.My.Car;
 
 import java.awt.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class BEV extends Car{
 
     private Double batteryPercentage;
 
 
-    public BEV(Long id,
+    public BEV(
                String brand,
-               Image image,
+               String image,
                String brandModel,
                Integer kmDriven,
-               Date endDateTime,
+               LocalDateTime endDateTime,
                Integer range,
                Double TCO,
                Double batteryPercentage) {
-        super(id, brand, image, brandModel, kmDriven, endDateTime, range, TCO);
+        super(brand, image, brandModel, kmDriven, endDateTime, range, TCO);
         this.batteryPercentage = batteryPercentage;
     }
 }
