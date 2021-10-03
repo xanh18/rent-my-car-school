@@ -22,10 +22,10 @@ public class User {
     private double longitude;
     private double latitude;
 
-    @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Trip> trips;
 
-    @OneToMany(targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Car> cars;
 
 

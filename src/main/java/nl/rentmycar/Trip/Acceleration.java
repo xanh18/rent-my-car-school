@@ -11,6 +11,7 @@ public class Acceleration {
     private AccelType type;
     private double speed;
     private double time;
+
     @ManyToOne
     @JoinColumn(name = "trip_id")
     private Trip trip;

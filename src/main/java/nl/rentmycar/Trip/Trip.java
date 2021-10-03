@@ -22,15 +22,15 @@ public class Trip {
     private double latitude;
     private double TCO;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="car_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id")
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
     public List<Acceleration> accelerations;
 
     public Long getId() {

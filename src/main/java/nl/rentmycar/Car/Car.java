@@ -1,5 +1,6 @@
 package nl.rentmycar.Car;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
 import nl.rentmycar.User.User;
@@ -25,11 +26,13 @@ public class Car {
     private Integer carRange;
     private Double TCO;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id", nullable = false)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
     public List<Trip> trips;
 
 
