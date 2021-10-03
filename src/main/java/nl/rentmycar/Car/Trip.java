@@ -1,4 +1,6 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
+
+import nl.rentmycar.Trip.Acceleration;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

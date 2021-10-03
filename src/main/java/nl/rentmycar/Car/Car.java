@@ -1,4 +1,4 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
 
 import javax.persistence.*;
 import java.awt.*;

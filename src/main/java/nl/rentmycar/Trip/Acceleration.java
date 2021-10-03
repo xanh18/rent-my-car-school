@@ -1,4 +1,6 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Trip;
+
+import nl.rentmycar.Car.Trip;
 
 import javax.persistence.*;
 

@@ -1,9 +1,10 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
 
-import java.awt.*;
+import nl.rentmycar.Car.Car;
+
 import java.time.LocalDateTime;
 
-public class BEV extends Car{
+public class BEV extends Car {
 
     private Double batteryPercentage;
 

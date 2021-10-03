@@ -1,9 +1,10 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
 
-import java.awt.*;
+import nl.rentmycar.Car.Car;
+
 import java.time.LocalDateTime;
 
-public class ICE extends Car{
+public class ICE extends Car {
 
     private Integer tank;
 
