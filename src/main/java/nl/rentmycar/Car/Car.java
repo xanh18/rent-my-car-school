@@ -1,8 +1,12 @@
 package nl.rentmycar.Car;
 
+import nl.rentmycar.Trip.Acceleration;
+import nl.rentmycar.Trip.Trip;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Car {
@@ -18,6 +22,9 @@ public class Car {
     private LocalDateTime endDateTime;
     private Integer carRange;
     private Double TCO;
+
+    @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
+    public List<Trip> trips;
 
     public Car(String brand,
                String image,
@@ -100,6 +107,22 @@ public class Car {
 
     public void setTCO(Double TCO) {
         this.TCO = TCO;
+    }
+
+    public Integer getCarRange() {
+        return carRange;
+    }
+
+    public void setCarRange(Integer carRange) {
+        this.carRange = carRange;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }
 

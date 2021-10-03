@@ -1,6 +1,10 @@
 package nl.rentmycar.User;
 
+import nl.rentmycar.Trip.Acceleration;
+import nl.rentmycar.Trip.Trip;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -15,6 +19,9 @@ public class User {
     private String phone;
     private double longitude;
     private double latitude;
+
+    @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
+    public List<Trip> trips;
 
     public Long getId() {
         return id;
@@ -78,6 +85,14 @@ public class User {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 
     @Override

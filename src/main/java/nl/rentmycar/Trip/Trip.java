@@ -1,6 +1,8 @@
 package nl.rentmycar.Trip;
 
+import nl.rentmycar.Car.Car;
 import nl.rentmycar.Trip.Acceleration;
+import nl.rentmycar.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,6 +21,14 @@ public class Trip {
     private double longitude;
     private double latitude;
     private double TCO;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToMany(targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
     public List<Acceleration> accelerations;
@@ -83,6 +93,30 @@ public class Trip {
         return accelerations;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Acceleration> getAccelerations() {
+        return accelerations;
+    }
+
+    public void setAccelerations(List<Acceleration> accelerations) {
+        this.accelerations = accelerations;
+    }
+
     public void addAcceleration(Acceleration acceleration) {
         acceleration.setTrip(this);
         this.accelerations.add(acceleration);
@@ -101,7 +135,7 @@ public class Trip {
                 '}';
     }
 
-    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO) {
+    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO, User user, Car car) {
         this.distance = distance;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -109,6 +143,8 @@ public class Trip {
         this.latitude = latitude;
         this.TCO = TCO;
         this.accelerations = new ArrayList<>();
+        this.user = user;
+        this.car = car;
     }
 
     public Trip(){
