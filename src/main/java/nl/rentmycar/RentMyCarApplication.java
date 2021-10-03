@@ -3,7 +3,7 @@ package nl.rentmycar;
 
 import nl.rentmycar.Car.Car;
 import nl.rentmycar.Car.CarRepository;
-import nl.rentmycar.Car.Trip;
+import nl.rentmycar.Trip.Trip;
 import nl.rentmycar.Trip.AccelType;
 import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.TripRepository;

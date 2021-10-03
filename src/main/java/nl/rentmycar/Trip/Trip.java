@@ -1,4 +1,4 @@
-package nl.rentmycar.Car;
+package nl.rentmycar.Trip;
 
 import nl.rentmycar.Trip.Acceleration;
 
