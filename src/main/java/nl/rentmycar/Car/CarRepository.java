@@ -1,5 +1,6 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
 
+import nl.rentmycar.Car.Car;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,9 +1,10 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Car;
 
-import java.awt.*;
+import nl.rentmycar.Car.Car;
+
 import java.time.LocalDateTime;
 
-public class FCEV extends Car{
+public class FCEV extends Car {
 
     private Double batteryPercentage;
     private Double hydrogen;

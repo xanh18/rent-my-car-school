@@ -1,4 +1,4 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar.Trip;
 
 public enum AccelType {
     Brake,

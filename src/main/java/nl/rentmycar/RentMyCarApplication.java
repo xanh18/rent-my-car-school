@@ -1,6 +1,14 @@
-package nl.rentmycar.Rent.My.Car;
+package nl.rentmycar;
 
 
+import nl.rentmycar.Car.Car;
+import nl.rentmycar.Car.CarRepository;
+import nl.rentmycar.Car.Trip;
+import nl.rentmycar.Trip.AccelType;
+import nl.rentmycar.Trip.Acceleration;
+import nl.rentmycar.Trip.TripRepository;
+import nl.rentmycar.User.User;
+import nl.rentmycar.User.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
