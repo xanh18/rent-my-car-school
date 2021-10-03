@@ -1,6 +1,4 @@
-package nl.rentmycar.Rent.My.Car.Control;
-import nl.rentmycar.Rent.My.Car.Car;
-import nl.rentmycar.Rent.My.Car.CarRepository;
+package nl.rentmycar.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
