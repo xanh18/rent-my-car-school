@@ -16,7 +16,8 @@ public class TestController {
     {
         if (brand == null) {
             return repo.findAll();
+        } else{
+            return repo.findCarByBrandContaining(brand);
         }
-        return repo.findCarByBrandContaining(brand);
     }
 }

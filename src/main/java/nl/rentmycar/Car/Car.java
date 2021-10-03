@@ -2,10 +2,12 @@ package nl.rentmycar.Car;
 
 import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
+import nl.rentmycar.User.User;
 
 import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,15 +25,20 @@ public class Car {
     private Integer carRange;
     private Double TCO;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
+
     @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
     public List<Trip> trips;
+
 
     public Car(String brand,
                String image,
                String brandModel,
                Integer kmDriven,
                LocalDateTime endDateTime,
-               Integer range,
+               Integer carRange,
                Double TCO)
     {
         this.brand = brand;
@@ -39,8 +46,9 @@ public class Car {
         this.brandModel = brandModel;
         this.kmDriven = kmDriven;
         this.endDateTime = endDateTime;
-        this.carRange = range;
+        this.carRange = carRange;
         this.TCO = TCO;
+        this.trips = new ArrayList<>();
     }
 
     public Car(){}
@@ -97,7 +105,7 @@ public class Car {
         return carRange;
     }
 
-    public void setRange(Integer carRange) {
+    public void setCarRange(Integer carRange) {
         this.carRange = carRange;
     }
 
@@ -109,12 +117,17 @@ public class Car {
         this.TCO = TCO;
     }
 
-    public Integer getCarRange() {
-        return carRange;
+    public void addTrip(Trip trip) {
+        trip.setCar(this);
+        this.trips.add(trip);
     }
 
-    public void setCarRange(Integer carRange) {
-        this.carRange = carRange;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Trip> getTrips() {

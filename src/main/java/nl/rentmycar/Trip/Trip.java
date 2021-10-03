@@ -22,12 +22,12 @@ public class Trip {
     private double latitude;
     private double TCO;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="car_id")
     private Car car;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
     private User user;
 
     @OneToMany(targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
@@ -135,7 +135,7 @@ public class Trip {
                 '}';
     }
 
-    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO, User user, Car car) {
+    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO) {
         this.distance = distance;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -143,8 +143,6 @@ public class Trip {
         this.latitude = latitude;
         this.TCO = TCO;
         this.accelerations = new ArrayList<>();
-        this.user = user;
-        this.car = car;
     }
 
     public Trip(){

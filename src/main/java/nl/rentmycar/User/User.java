@@ -1,9 +1,11 @@
 package nl.rentmycar.User;
 
+import nl.rentmycar.Car.Car;
 import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +24,10 @@ public class User {
 
     @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Trip> trips;
+
+    @OneToMany(targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy="user")
+    public List<Car> cars;
+
 
     public Long getId() {
         return id;
@@ -87,12 +93,30 @@ public class User {
         this.latitude = latitude;
     }
 
+    public void addTrip(Trip trip) {
+        trip.setUser(this);
+        this.trips.add(trip);
+    }
+
+    public void addCar(Car car) {
+        car.setUser(this);
+        this.cars.add(car);
+    }
+
     public List<Trip> getTrips() {
         return trips;
     }
 
     public void setTrips(List<Trip> trips) {
         this.trips = trips;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     @Override
@@ -117,10 +141,13 @@ public class User {
         this.phone = phone;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.cars = new ArrayList<>();
+        this.trips = new ArrayList<>();
     }
 
     public User(){
-
+        this.cars = new ArrayList<>();
+        this.trips = new ArrayList<>();
     }
 
 
