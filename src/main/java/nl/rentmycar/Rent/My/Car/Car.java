@@ -1,15 +1,26 @@
 package nl.rentmycar.Rent.My.Car;
 
 import javax.persistence.*;
-import java.awt.*;
+import java.util.List;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 public class Car {
 
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
+
+
+    @OneToMany(targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
+    public List <Trip> trips;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id",nullable = false)
     private Long id;
     private String brand;
     private String image;
@@ -34,9 +45,10 @@ public class Car {
         this.endDateTime = endDateTime;
         this.carRange = range;
         this.TCO = TCO;
+        this.trips= new ArrayList<>();
     }
 
-    public Car(){}
+    public Car(){this.trips= new ArrayList<>();}
 
     public Long getId() {
         return id;

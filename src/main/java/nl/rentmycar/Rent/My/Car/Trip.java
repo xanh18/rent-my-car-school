@@ -7,9 +7,18 @@ import java.util.List;
 
 @Entity
 public class Trip {
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="car_id")
+    private Car car;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
     private double distance;
     private LocalDateTime startDateTime;
@@ -86,18 +95,6 @@ public class Trip {
         this.accelerations.add(acceleration);
     }
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", distance=" + distance +
-                ", startDateTime=" + startDateTime +
-                ", endDateTime=" + endDateTime +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", TCO=" + TCO +
-                '}';
-    }
 
     public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO) {
         this.distance = distance;

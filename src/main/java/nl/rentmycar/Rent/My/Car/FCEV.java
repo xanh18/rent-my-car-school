@@ -1,9 +1,12 @@
 package nl.rentmycar.Rent.My.Car;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import java.awt.*;
 import java.time.LocalDateTime;
 
 public class FCEV extends Car{
+
 
     private Double batteryPercentage;
     private Double hydrogen;

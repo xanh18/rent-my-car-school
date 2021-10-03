@@ -3,10 +3,20 @@ package nl.rentmycar.Rent.My.Car;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "User")
 public class User {
+
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL )
+    @JoinColumn(name="car_id",nullable= false)
+    private Car car;
+
+    @OneToMany(mappedBy = "trip" , cascade = CascadeType.ALL )
+    @JoinColumn(name="trip_id",nullable= false)
+    private Trip trip;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)// autoincrement
     private Long id;
     private String email;
     private String firstName;
@@ -80,19 +90,6 @@ public class User {
         this.latitude = latitude;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                '}';
-    }
 
     public User(String email, String firstName, String lastName, String address, String phone, double longitude, double latitude) {
         this.email = email;
