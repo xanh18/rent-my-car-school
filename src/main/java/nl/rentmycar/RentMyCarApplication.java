@@ -45,7 +45,7 @@ public class RentMyCarApplication {
 	}
 
 	private void insertUser(UserRepository repo){
-		User user = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7);
+		User user = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7,"test","test", true);
 		Car car = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),10000,53.44);
 		Trip trip = new Trip(4.00, LocalDateTime.now(), LocalDateTime.now(), 4.00, 4.00, 4.00);
 		trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
@@ -59,12 +59,12 @@ public class RentMyCarApplication {
 		Car car1 = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),10000,53.44);
 		Car car2 = new Car("volkswagen","Avans","gold",10, LocalDateTime.now(),10000,53.44);
 
-		User user1 = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7);
-		User user2 = new User("mail@mail.mail", "Roboute", "Guilliman", "Address 2", "123456", 6, 7);
-		User user3 = new User("mail@mail.mail", "Magnus", "the Red", "Address 3", "123456", 6, 7);
-		User user4 = new User("mail@mail.mail", "Konrad", "Curze", "Address 1", "123456", 6, 7);
-		User user5 = new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7);
-		User user6 = new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7);
+		User user1 = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7,"test","test", true);
+		User user2 = new User("mail@mail.mail", "Roboute", "Guilliman", "Address 2", "123456", 6, 7,"pietje@mail.nl", "wachtwoord", true);
+		User user3 = new User("mail@mail.mail", "Magnus", "the Red", "Address 3", "123456", 6, 7,"jantje@mail.nl", "Test1234", true);
+		User user4 = new User("mail@mail.mail", "Konrad", "Curze", "Address 1", "123456", 6, 7,"keesie@mail.nl", "Test1234", true);
+		User user5 = new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7,"xanh@mail.nl", "Test1234", true);
+		User user6 = new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7,"pieter@mail.nl", "Test1234", true);
 		return repo.findById(1L).get();
 	}
 
