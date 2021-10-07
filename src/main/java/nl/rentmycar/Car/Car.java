@@ -1,12 +1,10 @@
 package nl.rentmycar.Car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
 import nl.rentmycar.User.User;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,6 @@ public class Car {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnore
