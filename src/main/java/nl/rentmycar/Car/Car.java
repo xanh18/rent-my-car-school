@@ -1,12 +1,11 @@
 package nl.rentmycar.Car;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import nl.rentmycar.Trip.Acceleration;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import nl.rentmycar.Trip.Trip;
 import nl.rentmycar.User.User;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +25,11 @@ public class Car {
     private Integer carRange;
     private Double TCO;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
     public List<Trip> trips;
 
