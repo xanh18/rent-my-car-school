@@ -1,6 +1,7 @@
 package nl.rentmycar.Car;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import nl.rentmycar.Trip.Trip;
 import nl.rentmycar.User.User;
 
@@ -24,11 +25,11 @@ public class Car {
     private Integer carRange;
     private Double TCO;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
     public List<Trip> trips;
 

@@ -1,7 +1,7 @@
 package nl.rentmycar.User;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import nl.rentmycar.Car.Car;
-import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
 
 import javax.persistence.*;
@@ -22,9 +22,11 @@ public class User {
     private double longitude;
     private double latitude;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Trip> trips;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Car> cars;
 

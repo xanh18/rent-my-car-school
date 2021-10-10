@@ -1,5 +1,7 @@
 package nl.rentmycar.Trip;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Acceleration {
     private double speed;
     private double time;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "trip_id")
     private Trip trip;

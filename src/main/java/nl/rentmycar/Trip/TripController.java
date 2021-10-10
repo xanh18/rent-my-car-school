@@ -1,4 +1,4 @@
-package nl.rentmycar.Car;
+package nl.rentmycar.Trip;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +9,16 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/car")
-public class CarController {
+@RequestMapping(path = "/trip")
+public class TripController {
 
     @Autowired
-    private ICarService carService;
+    private ITripService tripService;
 
     @GetMapping()
-    public List<Car> getCar() {
-        List cars = (List<Car>) carService.findAll();
-        return cars;
+    public List<Trip> getTrips() {
+        List trips = (List<Trip>) tripService.findAll();
+        return trips;
     }
 
 }

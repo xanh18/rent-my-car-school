@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("/test")
 public class TestController {
 
     @Autowired
@@ -19,5 +19,9 @@ public class TestController {
         } else{
             return repo.findCarByBrandContaining(brand);
         }
+    }
+
+    public void drive(@RequestParam() String location){
+
     }
 }

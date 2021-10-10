@@ -27,13 +27,13 @@ public class RentMyCarApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run (CarRepository repo){
+	public CommandLineRunner run (UserRepository repo){
 		return (args -> {
 //			insertUser(repo);
 //			for (User user : repo.findUserByLastNameContaining("e")){
 //				System.out.println(user);
 //			}
-			insertCar(repo);
+			insertUser(repo);
 
 		});
 	}
