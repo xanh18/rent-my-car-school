@@ -47,9 +47,11 @@ public class RentMyCarApplication {
 	private void insertUser(UserRepository repo){
 		User user = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7);
 		Car car = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),10000,53.44);
+		Car car2 = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),10000,53.44);
 		Trip trip = new Trip(4.00, LocalDateTime.now(), LocalDateTime.now(), 4.00, 4.00, 4.00);
 		trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
 		user.addCar(car);
+		user.addCar(car2);
 		user.addTrip(trip);
 		car.addTrip(trip);
 		repo.save(user);

@@ -16,7 +16,6 @@ public class Acceleration {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "trip_id")
     private Trip trip;
 
     public Trip getTrip() {
