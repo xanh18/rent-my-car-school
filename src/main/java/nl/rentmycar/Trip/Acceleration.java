@@ -14,7 +14,7 @@ public class Acceleration {
     private double speed;
     private double time;
 
-    @JsonBackReference
+    @JsonBackReference(value="trip-acceleration")
     @ManyToOne
     private Trip trip;
 

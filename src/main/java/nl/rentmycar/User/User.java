@@ -1,5 +1,7 @@
 package nl.rentmycar.User;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import nl.rentmycar.Car.Car;
 import nl.rentmycar.Trip.Acceleration;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +46,11 @@ public class User {
     @NotNull
     private String password;
 
-
+    @JsonManagedReference(value="user-trip")
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Trip> trips;
 
+    @JsonManagedReference(value="user-car")
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy="user")
     public List<Car> cars;
 
@@ -199,6 +202,19 @@ public class User {
         this.username = username;
         this.password = password;
         this.loggedIn = loggedIn;
+    }
+
+    public User(String email, String firstName, String lastName, String address, String phone,
+                double longitude, double latitude) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.cars = new ArrayList<>();
+        this.trips = new ArrayList<>();
     }
 
     public User(){

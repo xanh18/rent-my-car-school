@@ -25,11 +25,11 @@ public class Car {
     private Integer carRange;
     private Double TCO;
 
-    @JsonBackReference
+    @JsonBackReference(value="user-car")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="car-trip")
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
     public List<Trip> trips;
 

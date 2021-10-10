@@ -25,15 +25,15 @@ public class Trip {
     private double latitude;
     private double TCO;
 
-    @JsonBackReference
+    @JsonBackReference(value="car-trip")
     @ManyToOne(fetch = FetchType.LAZY)
     private Car car;
 
-    @JsonBackReference
+    @JsonBackReference(value="user-trip")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference
+    @JsonManagedReference(value="trip-acceleration")
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
     public List<Acceleration> accelerations;
 
