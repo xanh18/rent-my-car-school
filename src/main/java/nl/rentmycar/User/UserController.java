@@ -7,8 +7,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserRepository userRepository;
-    @PostMapping("/users/register")
+    @PostMapping("/users/register/")
     public Status registerUser(@Valid @RequestBody User newUser) {
+
         List<User> users = (List<User>) userRepository.findAll();
         System.out.println("New user: " + newUser.toString());
         for (User user : users) {
