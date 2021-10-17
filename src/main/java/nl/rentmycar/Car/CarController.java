@@ -3,6 +3,7 @@ package nl.rentmycar.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,11 @@ public class CarController {
     public List<Car> findByBrandContaining(@PathVariable String brand)
     {
         return carService.findByBrandContaining(brand);
+    }
+
+    @PostMapping("/image")
+    public Optional<Car> insertImage(@Valid @RequestBody Car car){
+       return carService.insertImage(car);
     }
 
 }

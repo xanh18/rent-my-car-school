@@ -9,5 +9,7 @@ public interface ICarService {
     Optional<Car> findById(long id);
 
     List<Car> findByBrandContaining(String brand);
+
+    Optional<Car> insertImage(Car car);
 }
 
