@@ -222,5 +222,11 @@ public class User {
         this.trips = new ArrayList<>();
     }
 
+    public User(long id){
+        this.id = id;
+        this.cars = new ArrayList<>();
+        this.trips = new ArrayList<>();
+    }
+
 
 }

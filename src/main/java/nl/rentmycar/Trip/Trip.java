@@ -21,9 +21,9 @@ public class Trip {
     private double distance;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
-    private double longitude;
-    private double latitude;
-    private double TCO;
+    private String location;
+    @ElementCollection
+    private List<String> locations;
 
     @JsonBackReference(value="car-trip")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -69,28 +69,20 @@ public class Trip {
         this.endDateTime = endDateTime;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public List<String> getLocations() {
+        return locations;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getTCO() {
-        return TCO;
-    }
-
-    public void setTCO(double TCO) {
-        this.TCO = TCO;
+    public void setLocations(List<String> locations) {
+        this.locations = locations;
     }
 
     public List<Acceleration> accelerations() {
@@ -121,35 +113,32 @@ public class Trip {
         this.accelerations = accelerations;
     }
 
+    public void addToLocations(String location){
+        this.locations.add(location);
+        this.setLocation(location);
+    }
+
+    public boolean compare(Trip trip){
+        if(this.location.equals(trip.getLocation())){
+            return true;
+        }
+        return false;
+    }
+
     public void addAcceleration(Acceleration acceleration) {
         acceleration.setTrip(this);
         this.accelerations.add(acceleration);
     }
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", distance=" + distance +
-                ", startDateTime=" + startDateTime +
-                ", endDateTime=" + endDateTime +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", TCO=" + TCO +
-                '}';
-    }
-
-    public Trip(double distance, LocalDateTime startDateTime, LocalDateTime endDateTime, double longitude, double latitude, double TCO) {
-        this.distance = distance;
+    public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.TCO = TCO;
         this.accelerations = new ArrayList<>();
+        this.locations = new ArrayList<>();
     }
 
     public Trip(){
         this.accelerations = new ArrayList<>();
+        this.locations = new ArrayList<>();
     }
 }
