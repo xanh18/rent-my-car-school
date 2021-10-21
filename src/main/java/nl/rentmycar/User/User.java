@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +38,7 @@ public class User {
     private String lastName;
     private String address;
     private String phone;
+    private int socialCredit;
     private double longitude;
     private double latitude;
     private @NotBlank boolean loggedIn;
@@ -100,6 +100,12 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Integer getSocialCredit() {
+        return socialCredit;
+    }
+
+    public void setSocialCredit(int socialCredit) {this.socialCredit = socialCredit;}
 
     public String getPhone() {
         return phone;

@@ -9,7 +9,6 @@ public class UserController {
     UserRepository userRepository;
     @PostMapping("/users/register")
     public Status registerUser(@Valid @RequestBody User newUser) {
-
         List<User> users = (List<User>) userRepository.findAll();
         System.out.println("New user: " + newUser.toString());
         for (User user : users) {
