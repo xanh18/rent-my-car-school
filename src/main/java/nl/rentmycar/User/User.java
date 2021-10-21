@@ -1,17 +1,13 @@
 package nl.rentmycar.User;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import nl.rentmycar.Car.Car;
-import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.Trip;
-import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
@@ -131,7 +127,7 @@ public class User {
         this.latitude = latitude;
     }
 
-    public String getPassword(){return password;};
+    public String getPassword(){return password;}
 
     public void setPassword(String password){this.password = password;}
 
