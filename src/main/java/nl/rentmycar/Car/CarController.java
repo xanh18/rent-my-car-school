@@ -1,8 +1,11 @@
 package nl.rentmycar.Car;
 
+import nl.rentmycar.Trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +16,11 @@ public class CarController {
 
     @Autowired
     private ICarService carService;
+
+    @PostMapping(path = "/save")
+    public void saveCar(@Valid @RequestBody Car car){
+        carService.saveCar(car);
+    }
 
     @GetMapping()
     public List<Car> getCar() {
@@ -31,5 +39,8 @@ public class CarController {
     {
         return carService.findByBrandContaining(brand);
     }
+
+    @GetMapping("/car/{car}/{available}")
+    public List<Car> findByAvailable(@PathVariable ArrayList<Trip> available) {return carService.findByAvailable(available);}
 
 }
