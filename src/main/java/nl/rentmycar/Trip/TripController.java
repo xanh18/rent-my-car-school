@@ -1,11 +1,12 @@
 package nl.rentmycar.Trip;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -16,9 +17,32 @@ public class TripController {
     private ITripService tripService;
 
     @GetMapping()
-    public List<Trip> getTrips() {
-        List trips = (List<Trip>) tripService.findAll();
-        return trips;
+    public List<Trip> findAll() {
+        return (List<Trip>) tripService.findAll();
     }
 
+    @GetMapping(path = "/car/{id}")
+    public List<Trip> findByUser_Id(@PathVariable long id) {
+        return (List<Trip>) tripService.findByUser_Id(id);
+    }
+
+    @GetMapping(path = "/person/{id}")
+    public List<Trip> findByCar_Id(@PathVariable long id) {
+        return (List<Trip>) tripService.findByCar_Id(id);
+    }
+
+    @GetMapping(path = "/{id}")
+    public Optional<Trip> findById(@PathVariable long id) {
+        return tripService.findById(id);
+    }
+
+    @PostMapping(path = "/plan")
+    public void planTrip(@Valid @RequestBody Trip trip) {
+        tripService.planTrip(trip);
+    }
+
+    @PostMapping(path = "/location")
+    public void saveLocation(@Valid @RequestBody Trip trip) {
+        tripService.saveLocation(trip);
+    }
 }

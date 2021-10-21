@@ -52,7 +52,13 @@ public class Car {
         this.trips = new ArrayList<>();
     }
 
-    public Car(){}
+    public Car(){
+        this.trips = new ArrayList<>();
+    }
+    public Car(long id){
+        this.id = id;
+        this.trips = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
