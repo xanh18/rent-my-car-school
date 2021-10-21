@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -14,7 +15,7 @@ public class UserService implements IUserService {
     private UserRepository repo;
 
     @Override
-    public List<User> findALl() {
+    public List<User> findAll() {
         return (List<User>) repo.findAll();
     }
 
@@ -25,42 +26,34 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Status registerUser(User newUser) {
-        List<User> users = (List<User>) repo.findAll();
-        System.out.println("New user: " + newUser.toString());
-        for (User user : users) {
-            System.out.println("Registered user: " + newUser.toString());
-            if (user.equals(newUser)) {
-                System.out.println("User Already exists!");
-                return Status.USER_ALREADY_EXISTS;
-            }
+    public Status registerUser(User user) {
+        if(repo.findByUsername(user.getUsername()).isPresent()){
+            return Status.USER_ALREADY_EXISTS;
         }
-        repo.save(newUser);
+        repo.save(user);
         return Status.SUCCESS;
     }
 
     @Override
-    public Status loginUser(User user) {
-        List<User> users = (List<User>) repo.findAll();
-        for (User other : users) {
-            if (other.equals(user)) {
-                user.setLoggedIn(true);
-                repo.save(user);
-                return Status.SUCCESS;
-            }
+    public Status loginUser(User attempt) {
+        Optional<User> optional = repo.findByUsernameAndPassword(attempt.getUsername(), attempt.getPassword());
+        if(optional.isPresent()){
+            User user = optional.get();
+            user.setLoggedIn(true);
+            repo.save(user);
+            return Status.SUCCESS;
         }
         return Status.FAILURE;
     }
 
     @Override
     public Status logUserOut(User user) {
-        List<User> users = (List<User>) repo.findAll();
-        for (User other : users) {
-            if (other.equals(user)) {
-                user.setLoggedIn(false);
-                repo.save(user);
-                return Status.SUCCESS;
-            }
+        Optional<User> optional = repo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        if(optional.isPresent()){
+            user = optional.get();
+            user.setLoggedIn(false);
+            repo.save(user);
+            return Status.SUCCESS;
         }
         return Status.FAILURE;
     }

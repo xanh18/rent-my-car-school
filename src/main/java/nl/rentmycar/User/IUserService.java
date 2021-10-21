@@ -3,7 +3,8 @@ package nl.rentmycar.User;
 import java.util.List;
 
 public interface IUserService {
-    List<User> findALl();
+    List<User> findAll();
+
     Status deleteAll();
 
     Status registerUser(User user);

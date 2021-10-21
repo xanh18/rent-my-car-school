@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,17 @@ public class CarService implements ICarService{
     @Override
     public void saveCar(Car car) {
         repo.save(car);
+    }
+
+    @Override
+    public Iterable<Car> findByKmRateLessThanEqual(double kmrate) {
+        return repo.findByKmRateLessThanEqual(kmrate);
+    }
+
+    @Override
+    public Iterable<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(Trip trip) {
+
+        return repo.findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(trip.getStartDateTime(), trip.getEndDateTime());
     }
 
 }

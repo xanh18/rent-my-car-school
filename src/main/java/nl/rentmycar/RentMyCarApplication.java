@@ -46,24 +46,8 @@ public class RentMyCarApplication {
 
     private void insertUser(UserRepository repo) {
         User user = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7);
-        Car car = new Car("volkswagen",
-                "welkom",
-                "gold",
-                10,
-                LocalDateTime.now(),
-                10000,
-                53.44,
-                ""
-                );
-        Car car2 = new Car("volkswagen",
-                "welkom",
-                "gold",
-                10,
-                LocalDateTime.now(),
-                10000,
-                53.44,
-                ""
-                );
+        Car car = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),LocalDateTime.now(),5344,12.12);
+        Car car2 = new Car("volkswagen","welkom","gold",10,LocalDateTime.now(),LocalDateTime.now(),5344,12.12);
         Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
         trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
         user.addCar(car);
@@ -74,25 +58,9 @@ public class RentMyCarApplication {
     }
 
     private void insertCar(CarRepository repo) {
-        Car car1 = new Car("volkswagen",
-                "welkom",
-                "gold",
-                10,
-                LocalDateTime.now(),
-                10000,
-                53.44,
-                ""
-                );
-        Car car2 = new Car("volkswagen",
-                "Avans",
-                "gold",
-                10,
-                LocalDateTime.now(),
-                10000,
-                53.44,
-                "");
+        Car car1 = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),LocalDateTime.now(), 5344, 53.44);
+
         repo.save(car1);
-        repo.save(car2);
 
 //		User user1 = new User("mail@mail.mail", "Rogal", "Dorn", "Address 1", "123456", 6, 7);
 //		User user2 = new User("mail@mail.mail", "Roboute", "Guilliman", "Address 2", "123456", 6, 7);

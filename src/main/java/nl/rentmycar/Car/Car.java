@@ -62,10 +62,6 @@ public class Car {
         this.trips = new ArrayList<>();
     }
 
-    public Car(String volkswagen, String welkom, String gold, int i, LocalDateTime now, int i1, double v, String s) {
-        this.trips = new ArrayList<>();
-    }
-
     public Long getId() {
         return id;
     }
