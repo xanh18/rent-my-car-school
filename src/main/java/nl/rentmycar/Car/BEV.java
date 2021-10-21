@@ -14,11 +14,12 @@ public class BEV extends Car {
                String image,
                String brandModel,
                Integer kmDriven,
+               LocalDateTime startDateTime,
                LocalDateTime endDateTime,
                Integer range,
                Double TCO,
                Double batteryPercentage) {
-        super(brand, image, brandModel, kmDriven, endDateTime, range, TCO);
+        super(brand, image, brandModel, kmDriven, startDateTime, endDateTime, range, TCO);
         this.batteryPercentage = batteryPercentage;
     }
 }

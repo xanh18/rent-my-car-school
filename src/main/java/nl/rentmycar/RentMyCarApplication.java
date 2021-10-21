@@ -39,7 +39,7 @@ public class RentMyCarApplication {
     }
 
     private void testAccels(TripRepository repo) {
-        Trip trip = new Trip(4, LocalDateTime.now(), LocalDateTime.now(), 3, 5, 1);
+        Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
         trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
         repo.save(trip);
     }
@@ -64,7 +64,7 @@ public class RentMyCarApplication {
                 53.44,
                 ""
                 );
-        Trip trip = new Trip(4.00, LocalDateTime.now(), LocalDateTime.now(), 4.00, 4.00, 4.00);
+        Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
         trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
         user.addCar(car);
         user.addCar(car2);
@@ -101,10 +101,10 @@ public class RentMyCarApplication {
 //		User user5 = new User("mail@mail.mail", "Vulkan", "", "Address 2", "123456", 6, 7);
 //		User user6 = new User("mail@mail.mail", "Horus", "Lupercal", "Address 3", "123456", 6, 7);
 //		return repo.findById(1L).get();
-    }
+	}
 
     private void insertTrip(TripRepository repo, User user, Car car) {
-        Trip trip = new Trip(4.00, LocalDateTime.now(), LocalDateTime.now(), 4.00, 4.00, 4.00);
+        Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
     }
 
 }
