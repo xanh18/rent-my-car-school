@@ -15,22 +15,25 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String brand;
     private String image;
     private String brandModel;
     private Integer kmDriven;
+    private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private Integer carRange;
     private Double TCO;
+    private Double startRate;
+    private Double kmRate;
 
-    @JsonBackReference(value="user-car")
+    @JsonBackReference(value = "user-car")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference(value="car-trip")
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy="car")
+    @JsonManagedReference(value = "car-trip")
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy = "car")
     public List<Trip> trips;
 
 
@@ -38,21 +41,30 @@ public class Car {
                String image,
                String brandModel,
                Integer kmDriven,
+               LocalDateTime startDateTime,
                LocalDateTime endDateTime,
                Integer carRange,
-               Double TCO)
-    {
+               Double TCO) {
         this.brand = brand;
         this.image = image;
         this.brandModel = brandModel;
         this.kmDriven = kmDriven;
+        this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.carRange = carRange;
         this.TCO = TCO;
+        this.startRate = startRate;
+        this.kmRate = kmRate;
         this.trips = new ArrayList<>();
     }
 
-    public Car(){}
+    public Car() {
+        this.trips = new ArrayList<>();
+    }
+
+    public Car(String volkswagen, String welkom, String gold, int i, LocalDateTime now, int i1, double v, String s) {
+        this.trips = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -137,6 +149,30 @@ public class Car {
 
     public void setTrips(List<Trip> trips) {
         this.trips = trips;
+    }
+
+    public Double getStartRate() {
+        return startRate;
+    }
+
+    public void setStartRate(Double startRate) {
+        this.startRate = startRate;
+    }
+
+    public Double getKmRate() {
+        return kmRate;
+    }
+
+    public void setKmRate(Double kmRate) {
+        this.kmRate = kmRate;
+    }
+
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
+    }
+
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 }
 
