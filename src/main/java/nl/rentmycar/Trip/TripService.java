@@ -43,7 +43,7 @@ public class TripService implements ITripService {
     @Override
     public void saveLocation(Trip tripInfo) {
         Trip trip = repo.findById(tripInfo.getId()).get();
-        if(!trip.compare(tripInfo)){
+        if(!trip.equals(tripInfo)){
             trip.addToLocations(tripInfo.getLocation());
         }
         repo.save(trip);

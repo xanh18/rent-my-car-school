@@ -118,7 +118,7 @@ public class Trip {
         this.setLocation(location);
     }
 
-    public boolean compare(Trip trip){
+    public boolean equals(Trip trip){
         if(this.location.equals(trip.getLocation())){
             return true;
         }
