@@ -43,10 +43,19 @@ public class TripService implements ITripService {
     @Override
     public void saveLocation(Trip tripInfo) {
         Trip trip = repo.findById(tripInfo.getId()).get();
-        if(!trip.equals(tripInfo)){
-            trip.addToLocations(tripInfo.getLocation());
+        if(trip.getLocation() == null || trip.getLocation().isEmpty()){
+            trip.setLocation(tripInfo.getLocation());
+            repo.save(trip);
+        } else if (!trip.equals(tripInfo)){
+            Double x = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[0]);
+            Double y = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[1]);
+            x = x - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[0]);
+            y = y - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[1]);
+            Double xy = Math.sqrt((x * x) + (y * y));
+            trip.setDistance(trip.getDistance() + xy);
+            trip.setLocation(tripInfo.getLocation());
+            repo.save(trip);
         }
-        repo.save(trip);
     }
 
     @Override

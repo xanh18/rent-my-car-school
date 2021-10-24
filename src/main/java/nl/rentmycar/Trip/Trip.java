@@ -113,11 +113,6 @@ public class Trip {
         this.acceleration = acceleration;
     }
 
-    public void addToLocations(String location){
-        this.locations.add(location);
-        this.setLocation(location);
-    }
-
     public boolean equals(Trip trip){
         if(this.location.equals(trip.getLocation())){
             return true;
@@ -128,12 +123,10 @@ public class Trip {
     public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.locations = new ArrayList<>();
         this.acceleration = new Acceleration(0,0,0);
     }
 
     public Trip(){
-        this.locations = new ArrayList<>();
         this.acceleration = new Acceleration(0,0,0);
     }
 }
