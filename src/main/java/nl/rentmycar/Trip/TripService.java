@@ -48,4 +48,15 @@ public class TripService implements ITripService {
         }
         repo.save(trip);
     }
+
+    @Override
+    public boolean saveAcceleration(Trip newAccel) {
+        Trip trip = repo.findById(newAccel.getId()).get();
+        boolean result =  trip.getAcceleration().equals(newAccel.getAcceleration());
+        trip.getAcceleration().setxAxis(newAccel.getAcceleration().getxAxis());
+        trip.getAcceleration().setyAxis(newAccel.getAcceleration().getyAxis());
+        trip.getAcceleration().setzAxis(newAccel.getAcceleration().getzAxis());
+        repo.save(trip);
+        return result;
+    }
 }

@@ -10,20 +10,15 @@ public class Acceleration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private AccelType type;
-    private double speed;
-    private double time;
+    private double xAxis;
+    private double yAxis;
+    private double zAxis;
 
-    @JsonBackReference(value="trip-acceleration")
-    @ManyToOne
+    @OneToOne(mappedBy = "acceleration")
     private Trip trip;
 
     public Trip getTrip() {
         return trip;
-    }
-
-    public void setTrip(Trip trip) {
-        this.trip = trip;
     }
 
     public Long getId() {
@@ -34,45 +29,54 @@ public class Acceleration {
         this.id = id;
     }
 
-    public AccelType getType() {
-        return type;
+    public double getxAxis() {
+        return xAxis;
     }
 
-    public void setType(AccelType type) {
-        this.type = type;
+    public void setxAxis(double xAxis) {
+        this.xAxis = xAxis;
     }
 
-    public double getSpeed() {
-        return speed;
+    public double getyAxis() {
+        return yAxis;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public void setyAxis(double yAxis) {
+        this.yAxis = yAxis;
     }
 
-    public double getTime() {
-        return time;
+    public double getzAxis() {
+        return zAxis;
     }
 
-    public void setTime(double time) {
-        this.time = time;
+    public void setzAxis(double zAxis) {
+        this.zAxis = zAxis;
     }
 
-    public Acceleration(AccelType type, double speed, double time) {
-        this.type = type;
-        this.speed = speed;
-        this.time = time;
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+
+
+
+    public boolean equals(Acceleration acceleration){
+        var currentSpeed = (acceleration.getxAxis() * acceleration.getxAxis()) + (acceleration.getyAxis() * acceleration.getyAxis());
+        var previousSpeed = (this.getxAxis() * this.getxAxis()) + (this.getyAxis() * this.getyAxis());
+        var difference = currentSpeed - previousSpeed;
+        if(difference < 0){
+            difference = (difference * -1.00);
+        }
+        if(difference > 25){
+            return false;
+        }
+        return true;
     }
 
     public Acceleration(){}
 
-    @Override
-    public String toString() {
-        return "Acceleration{" +
-                "id=" + id +
-                ", type=" + type +
-                ", speed=" + speed +
-                ", time=" + time +
-                '}';
+    public Acceleration(double xAxis, double yAxis, double zAxis) {
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
+        this.zAxis = zAxis;
     }
 }

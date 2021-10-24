@@ -45,4 +45,9 @@ public class TripController {
     public void saveLocation(@Valid @RequestBody Trip trip) {
         tripService.saveLocation(trip);
     }
+
+    @PostMapping(path = "/acceleration")
+    public boolean saveAcceleration(@Valid @RequestBody Trip trip){
+        return tripService.saveAcceleration(trip);
+    }
 }

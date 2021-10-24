@@ -57,4 +57,14 @@ public class UserService implements IUserService {
         }
         return Status.FAILURE;
     }
+
+    @Override
+    public int findSocialCredit (String username){
+        Optional<User> optional = repo.findByUsername(username);
+        if(optional.isPresent()){
+            var user = optional.get();
+            return user.getSocialCredit();
+        }
+        return -2147483648;
+    }
 }

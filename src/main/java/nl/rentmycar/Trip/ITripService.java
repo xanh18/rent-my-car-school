@@ -11,4 +11,6 @@ public interface ITripService {
     Optional<Trip> findById(long id);
     void planTrip(Trip trip);
     void saveLocation(Trip trip);
+
+    boolean saveAcceleration(Trip trip);
 }

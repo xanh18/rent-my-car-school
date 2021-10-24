@@ -26,4 +26,10 @@ public class UserController {
     public Status deleteAll() {
         return userService.deleteAll();
     }
+
+    @GetMapping("/score/{username}")
+    public int findSocialCredit(@PathVariable String username){
+        return userService.findSocialCredit(username);
+    }
+
 }

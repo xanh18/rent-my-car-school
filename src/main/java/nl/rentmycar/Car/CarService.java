@@ -55,4 +55,14 @@ public class CarService implements ICarService{
         return repo.findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(trip.getStartDateTime(), trip.getEndDateTime());
     }
 
+    @Override
+    public Iterable<Car> findByUser_Id(long id) {
+        return repo.findByUser_Id(id);
+    }
+
+    @Override
+    public Iterable<Car> findByStartRateLessThanEqual(double startRate) {
+        return repo.findByStartRateLessThanEqual(startRate);
+    }
+
 }

@@ -40,7 +40,6 @@ public class RentMyCarApplication {
 
     private void testAccels(TripRepository repo) {
         Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
-        trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
         repo.save(trip);
     }
 
@@ -49,7 +48,6 @@ public class RentMyCarApplication {
         Car car = new Car("volkswagen","welkom","gold",10, LocalDateTime.now(),LocalDateTime.now(),5344,12.12);
         Car car2 = new Car("volkswagen","welkom","gold",10,LocalDateTime.now(),LocalDateTime.now(),5344,12.12);
         Trip trip = new Trip(LocalDateTime.now(), LocalDateTime.now());
-        trip.addAcceleration(new Acceleration(AccelType.Acceleration, 1, 2));
         user.addCar(car);
         user.addCar(car2);
         user.addTrip(trip);

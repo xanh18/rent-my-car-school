@@ -12,4 +12,6 @@ public interface IUserService {
     Status loginUser(User user);
 
     Status logUserOut(User user);
+
+    int findSocialCredit (String username);
 }

@@ -33,9 +33,9 @@ public class Trip {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference(value="trip-acceleration")
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Acceleration.class, cascade = CascadeType.ALL, mappedBy="trip")
-    public List<Acceleration> accelerations;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    public Acceleration acceleration;
 
     public Long getId() {
         return id;
@@ -85,8 +85,8 @@ public class Trip {
         this.locations = locations;
     }
 
-    public List<Acceleration> accelerations() {
-        return accelerations;
+    public Acceleration acceleration() {
+        return acceleration;
     }
 
     public Car getCar() {
@@ -105,12 +105,12 @@ public class Trip {
         this.user = user;
     }
 
-    public List<Acceleration> getAccelerations() {
-        return accelerations;
+    public Acceleration getAcceleration() {
+        return acceleration;
     }
 
-    public void setAccelerations(List<Acceleration> accelerations) {
-        this.accelerations = accelerations;
+    public void setAcceleration(Acceleration acceleration) {
+        this.acceleration = acceleration;
     }
 
     public void addToLocations(String location){
@@ -125,20 +125,15 @@ public class Trip {
         return false;
     }
 
-    public void addAcceleration(Acceleration acceleration) {
-        acceleration.setTrip(this);
-        this.accelerations.add(acceleration);
-    }
-
     public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.accelerations = new ArrayList<>();
         this.locations = new ArrayList<>();
+        this.acceleration = new Acceleration(0,0,0);
     }
 
     public Trip(){
-        this.accelerations = new ArrayList<>();
         this.locations = new ArrayList<>();
+        this.acceleration = new Acceleration(0,0,0);
     }
 }

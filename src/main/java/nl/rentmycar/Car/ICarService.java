@@ -22,5 +22,9 @@ public interface ICarService {
     Iterable<Car> findByKmRateLessThanEqual(double kmrate);
 
     Iterable<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(Trip trip);  //This is where we started questioning our naming conventions.
+
+    Iterable<Car> findByUser_Id(long id);
+
+    Iterable<Car> findByStartRateLessThanEqual(double startRate);
 }
 

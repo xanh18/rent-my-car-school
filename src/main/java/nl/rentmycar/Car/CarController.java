@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +35,13 @@ public class CarController {
     }
 
     @GetMapping("/brand/{brand}")
-    public List<Car> findByBrandContaining(@PathVariable String brand)
-    {
+    public List<Car> findByBrandContaining(@PathVariable String brand) {
         return carService.findByBrandContaining(brand);
+    }
+
+    @GetMapping(path = "/user/{id}")
+    public List<Car> findByUser_Id(@PathVariable long id) {
+        return (List<Car>) carService.findByUser_Id(id);
     }
 
     @GetMapping("/{car}/{available}")
@@ -52,6 +55,11 @@ public class CarController {
     @PostMapping("/search/available") //"endDateTime": "2015-02-05T12:59:11.332"
     public List<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(@Valid @RequestBody Trip trip){
         return (List<Car>) carService.findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(trip);
+    }
+
+    @GetMapping("/search/startRate/{startRate}")
+    public List<Car> findByStartRateLessThanEqual(@PathVariable double startRate){
+        return (List<Car>) carService.findByStartRateLessThanEqual(startRate);
     }
 
 }
