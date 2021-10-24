@@ -33,6 +33,7 @@ public class Trip {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @JsonManagedReference(value="trip-acceleration")
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "id")
     public Acceleration acceleration;

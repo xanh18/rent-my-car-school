@@ -14,6 +14,7 @@ public class Acceleration {
     private double yAxis;
     private double zAxis;
 
+    @JsonBackReference(value="trip-acceleration")
     @OneToOne(mappedBy = "acceleration")
     private Trip trip;
 
