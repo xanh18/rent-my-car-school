@@ -1,15 +1,12 @@
 package nl.rentmycar.Trip;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import nl.rentmycar.Car.Car;
-import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,18 +19,16 @@ public class Trip {
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private String location;
-    @ElementCollection
-    private List<String> locations;
 
-    @JsonBackReference(value="car-trip")
+    @JsonBackReference(value="car-trip") //Ensures no recursions happen when retrieving a Car.
     @ManyToOne(fetch = FetchType.LAZY)
     private Car car;
 
-    @JsonBackReference(value="user-trip")
+    @JsonBackReference(value="user-trip") //Ensures no recursions happen when retrieving a User.
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference(value="trip-acceleration")
+    @JsonManagedReference(value="trip-acceleration") //Ensures no recursions happen when retrieving a trip.
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "id")
     public Acceleration acceleration;
@@ -78,14 +73,6 @@ public class Trip {
         this.location = location;
     }
 
-    public List<String> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
-    }
-
     public Acceleration acceleration() {
         return acceleration;
     }
@@ -115,7 +102,7 @@ public class Trip {
     }
 
     public boolean equals(Trip trip){
-        if(this.location.equals(trip.getLocation())){
+        if(this.location.equals(trip.getLocation())){ //Checks if car has moved by comparing new location to old location.
             return true;
         }
         return false;
@@ -124,10 +111,10 @@ public class Trip {
     public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.acceleration = new Acceleration(0,0,0);
+        this.acceleration = new Acceleration(0,0,0); //Ensures there is always an acceleration, even if the Trip is new. Car is assumed to not be moving when the trip starts. Application is not compatible with action movie heroes that jump behind the wheel of an already moving car.
     }
 
     public Trip(){
-        this.acceleration = new Acceleration(0,0,0);
+        this.acceleration = new Acceleration(0,0,0); //Ensures there is always an acceleration, even if the Trip is new. Car is assumed to not be moving when the trip starts.
     }
 }

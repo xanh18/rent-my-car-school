@@ -4,17 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/trip")
+@RequestMapping(path = "/trip") //baseline for all trip endpoints. Always start with /trip followed by the path of the endpoint.
 public class TripController {
 
     @Autowired
-    private ITripService tripService;
+    private ITripService tripService;   //Autowiring handles the initialization of the TripService class.
 
     @GetMapping()
     public List<Trip> findAll() {

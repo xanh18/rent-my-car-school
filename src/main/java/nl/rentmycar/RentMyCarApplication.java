@@ -4,7 +4,6 @@ package nl.rentmycar;
 import nl.rentmycar.Car.Car;
 import nl.rentmycar.Car.CarRepository;
 import nl.rentmycar.Trip.Trip;
-import nl.rentmycar.Trip.AccelType;
 import nl.rentmycar.Trip.Acceleration;
 import nl.rentmycar.Trip.TripRepository;
 import nl.rentmycar.User.User;

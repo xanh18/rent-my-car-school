@@ -1,11 +1,8 @@
 package nl.rentmycar.Trip;
 
-import nl.rentmycar.Car.Car;
-import nl.rentmycar.User.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,30 +39,30 @@ public class TripService implements ITripService {
 
     @Override
     public void saveLocation(Trip tripInfo) {
-        Trip trip = repo.findById(tripInfo.getId()).get();
-        if(trip.getLocation() == null || trip.getLocation().isEmpty()){
-            trip.setLocation(tripInfo.getLocation());
-            repo.save(trip);
-        } else if (!trip.equals(tripInfo)){
-            Double x = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[0]);
-            Double y = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[1]);
-            x = x - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[0]);
-            y = y - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[1]);
-            Double xy = Math.sqrt((x * x) + (y * y));
-            trip.setDistance(trip.getDistance() + xy);
-            trip.setLocation(tripInfo.getLocation());
-            repo.save(trip);
+        Trip trip = repo.findById(tripInfo.getId()).get();                  //Gets current Trip
+        if(trip.getLocation() == null || trip.getLocation().isEmpty()){     //Checks if trip has a location, if not:
+            trip.setLocation(tripInfo.getLocation());                       //Gives the trip a location.
+            repo.save(trip);                                                //Saves trip
+        } else if (!trip.equals(tripInfo)){                                                           //Checks if car is standing still. If not:
+            Double x = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[0]);      //Gets x coordinates of current location.
+            Double y = Double.parseDouble(tripInfo.getLocation().split("\\s*[,]\\s*")[1]);      //Gets y coordinates of current location.
+            x = x - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[0]);             //Subtracts x coordinates of previous location from current.
+            y = y - Double.parseDouble(trip.getLocation().split("\\s*[,]\\s*")[1]);             //Subtracts y coordinates of previous location from current.
+            Double xy = Math.sqrt((x * x) + (y * y));       //Calculates distance.
+            trip.setDistance(trip.getDistance() + xy);      //Adds distance to Trip.distance.
+            trip.setLocation(tripInfo.getLocation());       //Saves location to Trip.location.
+            repo.save(trip);                                //Saves trip.
         }
     }
 
     @Override
     public boolean saveAcceleration(Trip newAccel) {
-        Trip trip = repo.findById(newAccel.getId()).get();
-        boolean result =  trip.getAcceleration().equals(newAccel.getAcceleration());
-        trip.getAcceleration().setxAxis(newAccel.getAcceleration().getxAxis());
-        trip.getAcceleration().setyAxis(newAccel.getAcceleration().getyAxis());
-        trip.getAcceleration().setzAxis(newAccel.getAcceleration().getzAxis());
-        repo.save(trip);
-        return result;
+        Trip trip = repo.findById(newAccel.getId()).get();                              //Gets current Trip.
+        boolean result =  trip.getAcceleration().equals(newAccel.getAcceleration());    //Checks if user is driving well.
+        trip.getAcceleration().setxAxis(newAccel.getAcceleration().getxAxis());         //Saves X axis speed.
+        trip.getAcceleration().setyAxis(newAccel.getAcceleration().getyAxis());         //Saves Y axis speed.
+        trip.getAcceleration().setzAxis(newAccel.getAcceleration().getzAxis());         //Saves Z axis speed.
+        repo.save(trip);    //Saves trip.
+        return result;      //returns whether the user is driving well. true = good, false = bad.
     }
 }
