@@ -11,13 +11,13 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/car")
+@RequestMapping(path = "/car") //baseline for all car endpoints. Always start with /car followed by the path of the endpoint.
 public class CarController {
 
     @Autowired
-    private ICarService carService;
+    private ICarService carService;  //Autowiring handles the initialization of the CarService class.
 
-    @PostMapping(path = "/save")
+    @PostMapping(path = "/save") //saves a new car and also changes to an existing car
     public void saveCar(@Valid @RequestBody Car car){
         carService.saveCar(car);
     }
@@ -28,36 +28,36 @@ public class CarController {
         return cars;
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/{id}") //find car by carId
     public Optional<Car> findById(@PathVariable long id)
     {
         return carService.findById(id);
     }
 
-    @GetMapping("/brand/{brand}")
+    @GetMapping("/brand/{brand}") // find cars by brand
     public List<Car> findByBrandContaining(@PathVariable String brand) {
         return carService.findByBrandContaining(brand);
     }
 
-    @GetMapping(path = "/user/{id}")
+    @GetMapping(path = "/user/{id}") // find car by user id
     public List<Car> findByUser_Id(@PathVariable long id) {
         return (List<Car>) carService.findByUser_Id(id);
     }
 
-    @GetMapping("/{car}/{available}")
+    @GetMapping("/{car}/{available}") //find cars whose are set to be available
     public List<Car> findByAvailable(@PathVariable ArrayList<Trip> available) {return carService.findByAvailable(available);}
 
-    @GetMapping("/search/kmrate/{kmrate}")
+    @GetMapping("/search/kmrate/{kmrate}") //find cars by km rate
     public List<Car> findByKmRateLessThanEqual(@PathVariable double kmrate){
         return (List<Car>) carService.findByKmRateLessThanEqual(kmrate);
     }
 
-    @PostMapping("/search/available") //"endDateTime": "2015-02-05T12:59:11.332"
+    @PostMapping("/search/available") //find cars available by certain time period
     public List<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(@Valid @RequestBody Trip trip){
         return (List<Car>) carService.findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(trip);
     }
 
-    @GetMapping("/search/startRate/{startRate}")
+    @GetMapping("/search/startRate/{startRate}") // find cars by startrate
     public List<Car> findByStartRateLessThanEqual(@PathVariable double startRate){
         return (List<Car>) carService.findByStartRateLessThanEqual(startRate);
     }

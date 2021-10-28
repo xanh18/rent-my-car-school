@@ -4,7 +4,7 @@ import nl.rentmycar.Car.Car;
 
 import java.time.LocalDateTime;
 
-public class ICE extends Car {
+public class ICE extends Car {  //subclass of Car
 
     private Integer tank;
 

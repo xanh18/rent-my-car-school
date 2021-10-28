@@ -14,7 +14,7 @@ import java.util.List;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //automatically generates value
     @Column(name = "id", nullable = false)
     private Long id;
     private String brand;
@@ -28,11 +28,11 @@ public class Car {
     private Double startRate;
     private Double kmRate;
 
-    @JsonBackReference(value = "user-car")
+    @JsonBackReference(value = "user-car") ////Ensures no recursions happen when retrieving a User.
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @JsonManagedReference(value = "car-trip")
+    @JsonManagedReference(value = "car-trip") //Ensures no recursions happen when retrieving a Car.
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Trip.class, cascade = CascadeType.ALL, mappedBy = "car")
     public List<Trip> trips;
 
