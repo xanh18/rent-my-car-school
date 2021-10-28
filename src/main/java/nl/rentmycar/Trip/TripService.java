@@ -12,6 +12,14 @@ public class TripService implements ITripService {
     @Autowired
     private TripRepository repo;
 
+    public TripService(TripRepository repository) {
+        this.repo = repository;
+    }
+
+    public TripService(){
+
+    }
+
     @Override
     public List<Trip> findAll() {
         return (List<Trip>) repo.findAll();

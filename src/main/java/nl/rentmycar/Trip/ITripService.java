@@ -19,6 +19,9 @@ public interface ITripService {
     //Plans a new trip. Trip has to include a user with a user_id and a car with a car_id, as well as a startDateTime and an endDateTime.
     void planTrip(Trip trip);
 
+    //Saves the location of the car during a trip. Old location will be overwritten and driven distance will be calculated and stored.
     void saveLocation(Trip trip);
+
+    //Saves acceleration data.
     boolean saveAcceleration(Trip trip);
 }

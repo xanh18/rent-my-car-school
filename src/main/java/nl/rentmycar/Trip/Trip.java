@@ -111,7 +111,7 @@ public class Trip {
     public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.acceleration = new Acceleration(0,0,0); //Ensures there is always an acceleration, even if the Trip is new. Car is assumed to not be moving when the trip starts. Application is not compatible with action movie heroes that jump behind the wheel of an already moving car.
+        this.acceleration = new Acceleration(0,0,0); //Ensures there is always an acceleration, even if the Trip is new. Car is assumed to not be moving when the trip starts.
     }
 
     public Trip(){
