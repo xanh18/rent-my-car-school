@@ -17,15 +17,15 @@ public class UserService implements IUserService {
     @Override
     public List<User> findAll() {
         return (List<User>) repo.findAll();
-    }
+    } //finds all users
 
-    @Override
+    @Override // deletes all users
     public Status deleteAll() {
         repo.deleteAll();
         return Status.SUCCESS;
     }
 
-    @Override
+    @Override // registers all users
     public Status registerUser(User user) {
         if(repo.findByUsername(user.getUsername()).isPresent()){
             return Status.USER_ALREADY_EXISTS;
@@ -34,7 +34,7 @@ public class UserService implements IUserService {
         return Status.SUCCESS;
     }
 
-    @Override
+    @Override //logins the user
     public Status loginUser(User attempt) {
         Optional<User> optional = repo.findByUsernameAndPassword(attempt.getUsername(), attempt.getPassword());
         if(optional.isPresent()){
@@ -46,7 +46,7 @@ public class UserService implements IUserService {
         return Status.FAILURE;
     }
 
-    @Override
+    @Override //logs the user out
     public Status logUserOut(User user) {
         Optional<User> optional = repo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         if(optional.isPresent()){
@@ -58,7 +58,7 @@ public class UserService implements IUserService {
         return Status.FAILURE;
     }
 
-    @Override
+    @Override // finds the social credit of the user
     public int findSocialCredit (String username){
         Optional<User> optional = repo.findByUsername(username);
         if(optional.isPresent()){
