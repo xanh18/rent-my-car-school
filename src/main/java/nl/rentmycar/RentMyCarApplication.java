@@ -3,6 +3,7 @@ package nl.rentmycar;
 
 import nl.rentmycar.Car.Car;
 import nl.rentmycar.Trip.Trip;
+import nl.rentmycar.User.UserRepository;
 import nl.rentmycar.User.User;
 import nl.rentmycar.User.UserRepository;
 import org.springframework.boot.CommandLineRunner;
