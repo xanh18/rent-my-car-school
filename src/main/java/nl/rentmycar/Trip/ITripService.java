@@ -17,7 +17,7 @@ public interface ITripService {
     Optional<Trip> findById(long id);
 
     //Plans a new trip. Trip has to include a user with a user_id and a car with a car_id, as well as a startDateTime and an endDateTime.
-    void planTrip(Trip trip);
+    long planTrip(Trip trip);
 
     //Saves the location of the car during a trip. Old location will be overwritten and driven distance will be calculated and stored.
     void saveLocation(Trip trip);

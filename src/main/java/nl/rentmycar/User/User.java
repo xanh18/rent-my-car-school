@@ -173,23 +173,6 @@ public class User {
         this.cars = cars;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", username=" + username +
-                ", password=" + password +
-                ", loggedIn=" + loggedIn +
-                '}';
-    }
-
     public User(String email, String firstName, String lastName, String address, String phone,
                 double longitude, double latitude, String username, String password, boolean loggedIn) {
         this.email = email;

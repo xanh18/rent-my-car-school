@@ -17,17 +17,17 @@ public class TripController {
 
     @GetMapping()
     public List<Trip> findAll() {
-        return (List<Trip>) tripService.findAll();
+        return tripService.findAll();
     }
 
     @GetMapping(path = "/car/{id}")
     public List<Trip> findByUser_Id(@PathVariable long id) {
-        return (List<Trip>) tripService.findByUser_Id(id);
+        return tripService.findByUser_Id(id);
     }
 
     @GetMapping(path = "/person/{id}")
     public List<Trip> findByCar_Id(@PathVariable long id) {
-        return (List<Trip>) tripService.findByCar_Id(id);
+        return tripService.findByCar_Id(id);
     }
 
     @GetMapping(path = "/{id}")
@@ -36,8 +36,8 @@ public class TripController {
     }
 
     @PostMapping(path = "/plan")
-    public void planTrip(@Valid @RequestBody Trip trip) {
-        tripService.planTrip(trip);
+    public long planTrip(@Valid @RequestBody Trip trip) {
+        return tripService.planTrip(trip);
     }
 
     @PostMapping(path = "/location")

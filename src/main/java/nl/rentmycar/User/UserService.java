@@ -47,8 +47,8 @@ public class UserService implements IUserService {
     }
 
     @Override //logs the user out
-    public Status logUserOut(User user) {
-        Optional<User> optional = repo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+    public Status logoutUser(User user) {
+        Optional<User> optional = repo.findById(user.getId());
         if(optional.isPresent()){
             user = optional.get();
             user.setLoggedIn(false);

@@ -24,8 +24,7 @@ public class CarController {
 
     @GetMapping()
     public List<Car> getCar() {
-        List cars = carService.findAll();
-        return cars;
+        return carService.findAll();
     }
 
     @GetMapping("/get/{id}") //find car by carId
@@ -53,7 +52,7 @@ public class CarController {
     }
 
     @PostMapping("/search/available") //find cars available by certain time period
-    public List<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(@Valid @RequestBody Trip trip){
+        public List<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(@Valid @RequestBody Trip trip){
         return (List<Car>) carService.findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(trip);
     }
 

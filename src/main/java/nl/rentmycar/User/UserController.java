@@ -22,8 +22,8 @@ public class UserController {
         return userService.loginUser(user);
     }
     @PostMapping("/logout")
-    public Status logUserOut(@Valid @RequestBody User user) {
-        return userService.logUserOut(user);
+    public Status logoutUser(@Valid @RequestBody User user) {
+        return userService.logoutUser(user);
     }
 
     //@DeleteMapping(“/users/all”):
