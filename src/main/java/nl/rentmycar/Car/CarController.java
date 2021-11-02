@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CarController {
 
     @Autowired
-    private ICarService carService;  //Autowiring handles the initialization of the CarService class.
+    private ICarService carService;  //Auto wiring handles the initialization of the CarService class.
 
     @PostMapping(path = "/save") //saves a new car and also changes to an existing car
     public void saveCar(@Valid @RequestBody Car car){

@@ -53,8 +53,6 @@ public class Car {
         this.endDateTime = endDateTime;
         this.carRange = carRange;
         this.TCO = TCO;
-        this.startRate = startRate;
-        this.kmRate = kmRate;
         this.trips = new ArrayList<>();
     }
 
@@ -110,7 +108,7 @@ public class Car {
         this.endDateTime = endDateTime;
     }
 
-    public Integer getcarRange() {
+    public Integer getCarRange() {
         return carRange;
     }
 

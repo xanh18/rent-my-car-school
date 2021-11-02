@@ -7,7 +7,6 @@ import nl.rentmycar.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 public class Trip {
@@ -73,10 +72,6 @@ public class Trip {
         this.location = location;
     }
 
-    public Acceleration acceleration() {
-        return acceleration;
-    }
-
     public Car getCar() {
         return car;
     }
@@ -102,10 +97,7 @@ public class Trip {
     }
 
     public boolean equals(Trip trip){
-        if(this.location.equals(trip.getLocation())){ //Checks if car has moved by comparing new location to old location.
-            return true;
-        }
-        return false;
+        return this.location.equals(trip.getLocation()); //Checks if car has moved by comparing new location to old location.
     }
 
     public Trip(LocalDateTime startDateTime, LocalDateTime endDateTime) {

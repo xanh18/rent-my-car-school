@@ -61,16 +61,14 @@ public class Acceleration {
 
 
     public boolean equals(Acceleration acceleration){ //Checks if you are accelerating too quickly.
-        var currentSpeed = (acceleration.getxAxis() * acceleration.getxAxis()) + (acceleration.getyAxis() * acceleration.getyAxis()); //Gets current speed along x and y axis squared.
-        var previousSpeed = (this.getxAxis() * this.getxAxis()) + (this.getyAxis() * this.getyAxis()); //Gets previous speed along x and y axis squared.
+        var currentSpeed = (acceleration.getxAxis() * acceleration.getxAxis()) + (acceleration.getyAxis() * acceleration.getyAxis()); //Gets current speed along x and y-axis squared.
+        var previousSpeed = (this.getxAxis() * this.getxAxis()) + (this.getyAxis() * this.getyAxis()); //Gets previous speed along x and y-axis squared.
         var difference = currentSpeed - previousSpeed; //Compares the 2 speeds.
         if(difference < 0){ //Ensures that the resulting difference is positive.
             difference = (difference * -1.00);
         }
-        if(difference > 25){ //if the speeds differ too much, return false.
-            return false;
-        }
-        return true; //when previous if isn't triggered, return true.
+                                    //if the speeds differ too much, return false.
+        return !(difference > 25);  //when previous if isn't triggered, return true.
     }
 
     public Acceleration(){}

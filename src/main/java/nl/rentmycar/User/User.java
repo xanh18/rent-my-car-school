@@ -138,7 +138,7 @@ public class User {
         this.loggedIn = loggedIn;
     }
 
-    @Override //compares the objects against in each other if it exist
+    @Override //compares the objects against in each other if it exists
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;

@@ -1,16 +1,27 @@
 package nl.rentmycar.Car;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
-import java.awt.*;
-import nl.rentmycar.Car.Car;
-
 import java.time.LocalDateTime;
 
 public class FCEV extends Car{ //subclass of Car
 
     private Double batteryPercentage;
     private Double hydrogen;
+
+    public Double getBatteryPercentage() {
+        return batteryPercentage;
+    }
+
+    public void setBatteryPercentage(Double batteryPercentage) {
+        this.batteryPercentage = batteryPercentage;
+    }
+
+    public Double getHydrogen() {
+        return hydrogen;
+    }
+
+    public void setHydrogen(Double hydrogen) {
+        this.hydrogen = hydrogen;
+    }
 
     public FCEV(
             String brand,

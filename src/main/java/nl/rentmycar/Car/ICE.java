@@ -1,7 +1,5 @@
 package nl.rentmycar.Car;
 
-import nl.rentmycar.Car.Car;
-
 import java.time.LocalDateTime;
 
 public class ICE extends Car {  //subclass of Car

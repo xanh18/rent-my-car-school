@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TripController {
 
     @Autowired
-    private ITripService tripService;   //Autowiring handles the initialization of the TripService class.
+    private ITripService tripService;   //Auto wiring handles the initialization of the TripService class.
 
     @GetMapping()
     public List<Trip> findAll() {

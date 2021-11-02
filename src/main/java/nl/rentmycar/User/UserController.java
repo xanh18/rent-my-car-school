@@ -12,7 +12,7 @@ public class UserController {
 
 
     //@PostMapping(“/users/register”): This tells Spring that whenever our program receives a Post Request to /users/register
-    // that the registerUser function should be called and then it pasts the received data to the registerUser function.
+    //the registerUser function should be called, and then it passes the received data to the registerUser function.
     @PostMapping("/register")
     public Status registerUser(@Valid @RequestBody User user) {
         return userService.registerUser(user);

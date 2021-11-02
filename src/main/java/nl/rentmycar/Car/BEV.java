@@ -1,14 +1,18 @@
 package nl.rentmycar.Car;
 
-import nl.rentmycar.Car.Car;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class BEV extends Car { //subclass of Car
 
     private Double batteryPercentage;
 
+    public Double getBatteryPercentage() {
+        return batteryPercentage;
+    }
+
+    public void setBatteryPercentage(Double batteryPercentage) {
+        this.batteryPercentage = batteryPercentage;
+    }
 
     public BEV(
                String brand,

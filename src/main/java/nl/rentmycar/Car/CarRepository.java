@@ -10,8 +10,6 @@ public interface CarRepository extends CrudRepository<Car,Long>{
 
     Iterable<Car> findByBrandContaining(String brand);
 
-//    Iterable<Car> findByAvailable(Trip trip);
-
     Iterable<Car> findByKmRateLessThanEqual(double kmrate);
 
     Iterable<Car> findByStartDateTimeLessThanEqualAndEndDateTimeGreaterThanEqual(LocalDateTime startDateTime, LocalDateTime endDateTime);
