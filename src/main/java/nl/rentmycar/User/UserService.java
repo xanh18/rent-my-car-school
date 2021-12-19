@@ -64,4 +64,10 @@ public class UserService implements IUserService {
         }
         return -2147483648;
     }
+
+    @Override
+    public Optional<User> findById(long id) {
+        System.out.print(repo.findById(id));
+        return repo.findById(id);
+    }
 }

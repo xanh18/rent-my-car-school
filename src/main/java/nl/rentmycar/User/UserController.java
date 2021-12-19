@@ -2,6 +2,7 @@ package nl.rentmycar.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/user")
@@ -9,6 +10,17 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @GetMapping(path = "/{id}")
+    public Optional<User> findById(@PathVariable long id) {
+        return userService.findById(id);
+    }
+
+    @GetMapping(path = "/findall")
+    public Iterable<User> findAll() {
+        return userService.findAll();
+    }
+
 
 
     //@PostMapping(“/users/register”): This tells Spring that whenever our program receives a Post Request to /users/register

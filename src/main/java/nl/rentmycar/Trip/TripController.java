@@ -36,7 +36,7 @@ public class TripController {
     }
 
     @PostMapping(path = "/plan")
-    public long planTrip(@Valid @RequestBody Trip trip) {
+    public Trip planTrip(@Valid @RequestBody Trip trip) {
         return tripService.planTrip(trip);
     }
 

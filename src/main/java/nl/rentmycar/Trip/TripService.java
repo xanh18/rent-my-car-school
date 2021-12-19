@@ -40,8 +40,8 @@ public class TripService implements ITripService {
     }
 
     @Override
-    public long planTrip(Trip trip) {
-        return repo.save(trip).getId();
+    public Trip planTrip(Trip trip) {
+        return repo.save(trip);
     }
 
     @Override
