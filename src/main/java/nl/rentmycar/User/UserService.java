@@ -23,24 +23,26 @@ public class UserService implements IUserService {
     }
 
     @Override // registers all users
-    public Status registerUser(User user) {
-        if(repo.findByUsername(user.getUsername()).isPresent()){
-            return Status.USER_ALREADY_EXISTS;
+    public User registerUser(User user) {
+        Optional<User> optional = repo.findByUsername(user.getUsername());
+        if(optional.isPresent()){
+            return new User();
         }
         repo.save(user);
-        return Status.SUCCESS;
+        return user;
     }
 
     @Override //logins the user
-    public Status loginUser(User attempt) {
+    public User loginUser(User attempt) {
         Optional<User> optional = repo.findByUsernameAndPassword(attempt.getUsername(), attempt.getPassword());
         if(optional.isPresent()){
             User user = optional.get();
             user.setLoggedIn(true);
             repo.save(user);
-            return Status.SUCCESS;
+            return user;
         }
-        return Status.FAILURE;
+        User user = new User();
+        return user;
     }
 
     @Override //logs the user out

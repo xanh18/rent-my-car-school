@@ -11,9 +11,9 @@ public interface IUserService {
 
     Status deleteAll();
 
-    Status registerUser(User user);
+    User registerUser(User user);
 
-    Status loginUser(User user);
+    User loginUser(User user);
 
     Status logoutUser(User user);
 

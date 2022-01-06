@@ -21,16 +21,14 @@ public class UserController {
         return userService.findAll();
     }
 
-
-
     //@PostMapping(“/users/register”): This tells Spring that whenever our program receives a Post Request to /users/register
     //the registerUser function should be called, and then it passes the received data to the registerUser function.
     @PostMapping("/register")
-    public Status registerUser(@Valid @RequestBody User user) {
+    public User registerUser(@Valid @RequestBody User user) {
         return userService.registerUser(user);
     }
     @PostMapping("/login")
-    public Status loginUser(@Valid @RequestBody User user) {
+    public User loginUser(@Valid @RequestBody User user) {
         return userService.loginUser(user);
     }
     @PostMapping("/logout")
