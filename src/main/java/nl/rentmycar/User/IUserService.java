@@ -20,4 +20,6 @@ public interface IUserService {
     int findSocialCredit (String username);
 
     Optional<User> findById(long id);
+
+    int lowerSocialCredit(User user);
 }

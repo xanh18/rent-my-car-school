@@ -187,6 +187,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.loggedIn = loggedIn;
+        this.socialCredit = 999;
     }
 
     public User(String email, String firstName, String lastName, String address, String phone,
@@ -200,6 +201,7 @@ public class User {
         this.latitude = latitude;
         this.cars = new ArrayList<>();
         this.trips = new ArrayList<>();
+        this.socialCredit = 999;
     }
 
     public User(){

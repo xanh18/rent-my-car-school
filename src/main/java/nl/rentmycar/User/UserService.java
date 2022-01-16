@@ -72,4 +72,18 @@ public class UserService implements IUserService {
         System.out.print(repo.findById(id));
         return repo.findById(id);
     }
+
+    @Override
+    public int lowerSocialCredit(User user) {
+        System.out.println("eh");
+        Optional<User> optional = repo.findById(user.getId());
+        if(optional.isPresent()) {
+            user = optional.get();
+            user.setSocialCredit(user.getSocialCredit() - 1);
+            repo.save(user);
+            System.out.println(user.getSocialCredit());
+            return user.getSocialCredit();
+        }
+        return 0;
+    }
 }

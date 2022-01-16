@@ -48,4 +48,7 @@ public class UserController {
         return userService.findSocialCredit(username);
     }
 
+    @PostMapping("/lower")
+    public int lowerSocialCredit(@Valid @RequestBody User user) { return userService.lowerSocialCredit(user); }
+
 }
