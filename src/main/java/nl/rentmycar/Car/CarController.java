@@ -18,8 +18,8 @@ public class CarController {
     private ICarService carService;  //Auto wiring handles the initialization of the CarService class.
 
     @PostMapping(path = "/save") //saves a new car and also changes to an existing car
-    public void saveCar(@Valid @RequestBody Car car){
-        carService.saveCar(car);
+    public boolean saveCar(@Valid @RequestBody Car car){
+        return carService.saveCar(car);
     }
 
     @GetMapping()

@@ -20,7 +20,7 @@ public interface ICarService {
     List<Car> findByAvailable(ArrayList<Trip> available);
 
     //Saves an instance of edits an instance of car
-    void saveCar(Car car);
+    boolean saveCar(Car car);
 
     //Gets cars by the max kmRate input of a user
     Iterable<Car> findByKmRateLessThanEqual(double kmrate);

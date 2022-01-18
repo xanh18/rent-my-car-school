@@ -34,8 +34,9 @@ public class CarService implements ICarService{
     }
 
     @Override
-    public void saveCar(Car car) {
+    public boolean saveCar(Car car) {
         repo.save(car);
+        return true;
     }
 
     @Override
