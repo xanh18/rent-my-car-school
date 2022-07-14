@@ -1,9 +1,9 @@
 # rent-my-car-school
-A rest api in Java with the spring framework./
-I created this api with 2 other students (Chris/cvmans and Dennis/outis073)./
+A rest api in Java with the spring framework  
+I created this api with 2 other students (Chris/cvmans and Dennis/outis073)  
 
-What have I learned./
+What have I learned  
 
-Basics in java./
-Basics in spring./
-how to write unit tests.
+Basics in java  
+Basics in spring  
+how to write unit tests  
