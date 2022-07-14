@@ -1,4 +1,6 @@
 # rent-my-car-school
+# A renting api that allows you to rent a car.
+
 A rest api in Java with the spring framework  
 I created this api with 2 other students (Chris/cvmans and Dennis/outis073)  
 
